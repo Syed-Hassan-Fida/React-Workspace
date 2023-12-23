@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import Counter from './Counter';
 
 const Hello = (props) => {
-    const [subscribe, setSubscribe] = useState("Subscribe")
+    const [subscribe, setSubscribe] = useState("subscribe")
     const [count, setCount] = useState(0)
-    const {name, email, address} = props.user;
+    const { name, email, address } = props.user;
+
+    function toCapital(str) {
+        return str.replace(/\b\w/g, (match) => match.toUpperCase());
+    }
 
     const HandleChange = () => {
-        setSubscribe("Subscribed")
+        setSubscribe("subscribed")
     }
 
     const HandleCount = () => {
         // set the value based on previous state
-        setCount((prevState) => (prevState + 1) )
+        setCount((prevState) => (prevState + 1))
         console.log(count)
     }
 
@@ -25,19 +29,17 @@ const Hello = (props) => {
     }
 
     return (
-        <div>
+        <div className='App'>
             <h1>Hello {name.toUpperCase()}</h1>
             <ul>
                 <li>Email: {email}</li>
                 <li>Address: {address}</li>
             </ul>
-            <button onClick={HandleChange}>{subscribe}</button>
-            <br/><br/>
+            <button className={subscribe === "subscribed" ? "subscribed" : "unsubscribe"} onClick={HandleChange}>{toCapital(subscribe)}</button>
+            <br /><br />
             <button onClick={incrementFive}>Counter</button>
-            <br/><br/>
-            <Counter count={count}/>
-            
-
+            <br /><br />
+            <Counter count={count} />
             {props.children}
         </div>
     );

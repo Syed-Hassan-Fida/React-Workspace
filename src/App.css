@@ -6,6 +6,22 @@
   align-items: center;
 }
 
+.subscribed{
+  color: black;
+  background-color: rgb(48, 239, 48);
+  cursor: pointer;
+  border: none;
+  padding: 5px;
+}
+
+.unsubscribe{
+  color: white;
+  background-color: rgb(202, 52, 52);
+  cursor: pointer;
+  border: none;
+  padding: 5px;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
