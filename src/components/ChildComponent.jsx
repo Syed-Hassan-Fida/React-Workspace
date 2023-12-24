@@ -17,7 +17,6 @@ const Hello = (props) => {
     const HandleCount = () => {
         // set the value based on previous state
         setCount((prevState) => (prevState + 1))
-        console.log(count)
     }
 
     const incrementFive = () => {

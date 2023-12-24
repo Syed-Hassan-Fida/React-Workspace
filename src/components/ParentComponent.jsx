@@ -13,13 +13,16 @@ const ParentComponent = () => {
         alert(`Return params ${child}`)
     }
 
+
+
     return (
-        <div>
+        <React.Fragment>
             <Hello user={userDetails}>
                 <p>This is Child Tag...</p>
             </Hello>
             <MethodAsProp handleAlert={HandleAlert}/>
-        </div>
+            
+        </React.Fragment>
     );
 }
 
