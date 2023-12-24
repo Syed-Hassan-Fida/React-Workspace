@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import {
     TextField, Button, Select, MenuItem,
     FormControl, InputLabel, Container, Typography 
@@ -12,6 +12,8 @@ const Form = () => {
         description: ""
     })
 
+    const inputRef = useRef()
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
@@ -24,6 +26,11 @@ const Form = () => {
         alert(`${formData.name}`)
         e.prevent.default()
     }
+
+    useEffect(()=>{
+        inputRef.current.focus()
+        console.log("ok",inputRef)
+    },[])
     
 
     return (
@@ -42,6 +49,7 @@ const Form = () => {
                         onChange={handleInputChange}
                         margin="normal"
                         required
+                        inputRef={inputRef}
                     />
                     <TextField
                         fullWidth

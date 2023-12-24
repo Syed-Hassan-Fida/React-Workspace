@@ -41,8 +41,8 @@ const App = () => {
 
   return (
     <div className='App'>
-      <ParentComp />
-      {/* <Form/> */}
+      {/* <ParentComp /> */}
+      <Form/>
       {/* <ParentComponent /> */}
       {/* <h1>Higher Order Component Example</h1> */}
       {/* <MyComponentWithLogging /> */}
