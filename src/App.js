@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import './App.css'
 import ParentComponent from './components/ParentComponent';
 import Form from './components/Form';
 import ParentComp from './components/ParentComp';
+import Portal from './components/Portal';
 
 // Higher Order Component function
 const withLogging = (WrappedComponent) => {
@@ -38,11 +39,12 @@ const MyComponentWithLogging = withLogging(MyComponent);
 
 // Now use MyComponentWithLogging in your app
 const App = () => {
-
   return (
     <div className='App'>
+
+      <Portal />
       {/* <ParentComp /> */}
-      <Form/>
+      {/* <Form/> */}
       {/* <ParentComponent /> */}
       {/* <h1>Higher Order Component Example</h1> */}
       {/* <MyComponentWithLogging /> */}
