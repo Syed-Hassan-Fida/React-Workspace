@@ -1,19 +1,33 @@
-import React, {useState} from 'react'
-import { createPortal } from 'react-dom';
-import Modal from './Modal';
+import React, { useState } from 'react'
+import ReactDOM from 'react-dom';
+import '../components/assets/model.css'
 
-const Portal = () => {
-    const [showModal, setShowModal] = useState(false);
-    return (
-      <>
-        <button onClick={() => setShowModal(true)}>
-          Show modal using a portal
-        </button>
-        {showModal && createPortal(
-          <Modal onClose={() => setShowModal(false)} />,
-          document.body
-        )}
-      </>
+const Portal = ({children, onClose, name}) => {
+    const [modalRoot] = useState(() => document.getElementById('modal-root'));
+    const modalElement = document.createElement('div');
+
+    if(name === "joker"){
+        throw new Error("Joker Faild")
+    }
+
+    React.useEffect(() => {
+        modalRoot.appendChild(modalElement);
+
+        return () => {
+            modalRoot.removeChild(modalElement);
+        };
+    }, [modalElement, modalRoot]);
+
+    return ReactDOM.createPortal(
+        <div className="modal-overlay" onClick={onClose}>
+            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                {children}
+                <button className="close-button" onClick={onClose}>
+                    Close
+                </button>
+            </div>
+        </div>,
+        modalElement
     );
 }
 

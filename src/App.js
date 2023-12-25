@@ -4,6 +4,9 @@ import ParentComponent from './components/ParentComponent';
 import Form from './components/Form';
 import ParentComp from './components/ParentComp';
 import Portal from './components/Portal';
+import ErrorBoundary from './components/ErrorBoundary';
+import ClickCounter from './components/ClickCounter';
+import HoverCounter from './components/HoverCounter';
 
 // Higher Order Component function
 const withLogging = (WrappedComponent) => {
@@ -39,15 +42,33 @@ const MyComponentWithLogging = withLogging(MyComponent);
 
 // Now use MyComponentWithLogging in your app
 const App = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+  };
   return (
     <div className='App'>
-
-      <Portal />
-      {/* <ParentComp /> */}
-      {/* <Form/> */}
-      {/* <ParentComponent /> */}
-      {/* <h1>Higher Order Component Example</h1> */}
-      {/* <MyComponentWithLogging /> */}
+      <ErrorBoundary>
+        <ClickCounter name="Hassan"/>
+        <HoverCounter/>
+        {/* <button onClick={openModal}>Open Modal</button>
+        {modalVisible && (
+          <Portal onClose={closeModal} name="joker">
+            <h2>This is a modal!</h2>
+            <p>Click outside the modal or the close button to close it.</p>
+          </Portal>
+        )} */}
+        {/* <ParentComp /> */}
+        {/* <Form/> */}
+        {/* <ParentComponent /> */}
+        {/* <h1>Higher Order Component Example</h1> */}
+        {/* <MyComponentWithLogging /> */}
+      </ErrorBoundary>
     </div>
   );
 };

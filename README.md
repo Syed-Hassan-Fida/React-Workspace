@@ -9,3 +9,6 @@ refs
 forwardrefs
 pureComponents
 lifecycle hooks
+portals
+Error bounmdaries
+
