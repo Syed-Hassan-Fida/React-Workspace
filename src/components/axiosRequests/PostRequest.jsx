@@ -1,15 +1,14 @@
 import React, { useRef, useEffect, useState } from 'react'
+import axios from 'axios';
 import {
-    TextField, Button, Select, MenuItem,
-    FormControl, InputLabel, Container, Typography 
+    TextField, Button, Container, Typography
 } from '@mui/material';
 
-const Form = () => {
+const PostRequest = () => {
     const [formData, setFormData] = useState({
-        name: "",
-        password: "",
-        role: "",
-        description: ""
+        userId: "",
+        title: "",
+        body: ""
     })
 
     const inputRef = useRef()
@@ -22,18 +21,22 @@ const Form = () => {
         }));
     };
 
-    const handleFormSubmit = (e) => {
-        alert(`${formData.name}`)
-        e.prevent.default()
+    const handleFormSubmit = e => {
+        e.preventDefault()
+        axios.post('https://jsonplaceholder.typicode.com/posts', formData)
+            .then((response) => {
+                console.log(response)
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         inputRef.current.focus()
-    },[])
-    
-
+    }, [])
     return (
-        <React.Fragment>
+        <div>
             <Container maxWidth="sm">
                 <Typography variant="h4" align="center" gutterBottom>
                     Registration Form
@@ -41,10 +44,10 @@ const Form = () => {
                 <form onSubmit={handleFormSubmit}>
                     <TextField
                         fullWidth
-                        label="Name"
+                        label="User Id"
                         variant="outlined"
-                        name="name"
-                        value={formData.name}
+                        name="userId"
+                        value={formData.userId}
                         onChange={handleInputChange}
                         margin="normal"
                         required
@@ -52,35 +55,22 @@ const Form = () => {
                     />
                     <TextField
                         fullWidth
-                        label="Password"
+                        label="Title"
                         variant="outlined"
-                        type="password"
-                        name="password"
-                        value={formData.password}
+                        name="title"
+                        value={formData.title}
                         onChange={handleInputChange}
                         margin="normal"
                         required
                     />
-                    <FormControl fullWidth variant="outlined" margin="normal" required>
-                        <InputLabel>Role</InputLabel>
-                        <Select
-                            label="Role"
-                            name="role"
-                            value={formData.role}
-                            onChange={handleInputChange}
-                        >
-                            <MenuItem value="admin">Admin</MenuItem>
-                            <MenuItem value="user">User</MenuItem>
-                        </Select>
-                    </FormControl>
                     <TextField
                         fullWidth
-                        label="Description"
+                        label="Body"
                         variant="outlined"
                         multiline
                         rows={4}
-                        name="description"
-                        value={formData.description}
+                        name="body"
+                        value={formData.body}
                         onChange={handleInputChange}
                         margin="normal"
                     />
@@ -89,8 +79,8 @@ const Form = () => {
                     </Button>
                 </form>
             </Container>
-        </React.Fragment>
+        </div>
     )
 }
 
-export default Form
+export default PostRequest

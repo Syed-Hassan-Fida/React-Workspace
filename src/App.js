@@ -9,6 +9,7 @@ import ClickCounter from './components/ClickCounter';
 import HoverCounter from './components/HoverCounter';
 import Main from './components/renderProps/Main';
 import ContextMain from './components/Context/ContextMain';
+import MainAxios from './components/axiosRequests/MainAxios';
 
 // Higher Order Component function
 const withLogging = (WrappedComponent) => {
@@ -56,7 +57,8 @@ const App = () => {
   return (
     <div className='App'>
       <ErrorBoundary>
-        <ContextMain/>
+        <MainAxios/>
+        {/* <ContextMain/> */}
         {/* <ClickCounter name="Hassan"/>
         <HoverCounter/>
 
