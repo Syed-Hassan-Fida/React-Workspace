@@ -7,7 +7,7 @@ const ContextMain = () => {
   return (
     <div>
       ContextMain
-      <UserProvider value="hassan">
+      <UserProvider>
         <ComponentA />
       </UserProvider>
     </div>

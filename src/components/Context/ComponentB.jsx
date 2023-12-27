@@ -7,7 +7,7 @@ export class ComponentB extends Component {
     render() {
         return (
             <div>
-                ComponentB--{ this.context.toUpperCase() }
+                ComponentB--{ this.context.name.toUpperCase() }
                 <ComponentC/>
             </div>
         )

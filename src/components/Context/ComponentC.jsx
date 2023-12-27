@@ -1,17 +1,19 @@
-import React from 'react'
-import { UserConsumer } from './UserContext'
+import React, { useContext } from 'react'
+import UserContext, { UserConsumer } from './UserContext'
 
 const ComponentC = () => {
+    const {name, addDetails} = useContext(UserContext)
   return (
     <div>
-        ComponentC
-            <UserConsumer>
+        ComponentC {name.toUpperCase()}<br/>
+        <button onClick={() => addDetails('Test')}>Click to Add Address</button>
+            {/* <UserConsumer>
                 {
                     (userName) => {
                         return <div>Name: {userName.toUpperCase()}</div>
                     }
                 }
-            </UserConsumer>
+            </UserConsumer> */}
     </div>
   )
 }
