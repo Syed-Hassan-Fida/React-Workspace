@@ -21,9 +21,9 @@ const MethodAsProp = (props) => {
     // array map
     const namesList = names.map((name, key) => {
         return (
-            <div key={key}>
+            <React.Fragment key={key}>
                 <p >Hi... {name}</p>
-            </div>
+            </React.Fragment>
         )
     })
 

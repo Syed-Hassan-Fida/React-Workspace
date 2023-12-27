@@ -7,6 +7,8 @@ import Portal from './components/Portal';
 import ErrorBoundary from './components/ErrorBoundary';
 import ClickCounter from './components/ClickCounter';
 import HoverCounter from './components/HoverCounter';
+import Main from './components/renderProps/Main';
+import ContextMain from './components/Context/ContextMain';
 
 // Higher Order Component function
 const withLogging = (WrappedComponent) => {
@@ -54,8 +56,11 @@ const App = () => {
   return (
     <div className='App'>
       <ErrorBoundary>
-        <ClickCounter name="Hassan"/>
+        <ContextMain/>
+        {/* <ClickCounter name="Hassan"/>
         <HoverCounter/>
+
+        <Main/> */}
         {/* <button onClick={openModal}>Open Modal</button>
         {modalVisible && (
           <Portal onClose={closeModal} name="joker">

@@ -11,4 +11,7 @@ pureComponents
 lifecycle hooks
 portals
 Error bounmdaries
-
+render Props
+context
+    React.createContext()
+    comes with => provider and consumer react component
