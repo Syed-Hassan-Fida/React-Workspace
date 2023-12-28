@@ -10,6 +10,9 @@ const PostRequest = () => {
         title: "",
         body: ""
     })
+    const [data, setData] = useState({})
+    const [success, setSuccess] = useState('')
+    const [error, setError] = useState('')
 
     const inputRef = useRef()
 
@@ -21,25 +24,34 @@ const PostRequest = () => {
         }));
     };
 
-    const handleFormSubmit = e => {
+    const handleFormSubmit = async (e) => {
         e.preventDefault()
-        axios.post('https://jsonplaceholder.typicode.com/posts', formData)
-            .then((response) => {
-                console.log(response)
-            })
-            .catch(error => {
-                console.error(error)
-            })
+        try {
+            const response = await axios.post('https://jsonplaceholder.typicode.com/posts', formData)
+            const apiResp = response.data
+            setData(apiResp)
+            setSuccess("Data Saved successfully...")
+        }
+        catch (error) {
+            console.error(error)
+            setError("Api failed to save data...")
+        }
     }
 
     useEffect(() => {
         inputRef.current.focus()
     }, [])
+
     return (
         <div>
             <Container maxWidth="sm">
                 <Typography variant="h4" align="center" gutterBottom>
                     Registration Form
+                </Typography>
+                <Typography style={{ background: "#00c30a", color: "white" , textAlign: "center"}}>
+                    {
+                        success ? <div>{success}</div> : null
+                    }
                 </Typography>
                 <form onSubmit={handleFormSubmit}>
                     <TextField
@@ -78,6 +90,17 @@ const PostRequest = () => {
                         Register
                     </Button>
                 </form>
+            </Container>
+            <Container maxWidth="sm" style={{background: "antiquewhite", padding: "10px", margin: "10px", borderRadius: "15px"}}>
+
+                {
+                    data ?
+                        <React.Fragment >
+                            <h3>Title: {data.title}</h3>
+                            <p>Body: {data.body}</p>
+                        </React.Fragment>
+                        : error ? <div>{error}</div> : null
+                }
             </Container>
         </div>
     )
