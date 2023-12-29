@@ -11,6 +11,7 @@ import Main from './components/renderProps/Main';
 import ContextMain from './components/Context/ContextMain';
 import MainAxios from './components/axiosRequests/MainAxios';
 import MainReactHooks from './components/ReactHooks/MainReactHooks';
+import MainRedux from './components/ReduxComponents/MainRedux';
 
 // Higher Order Component function
 const withLogging = (WrappedComponent) => {
@@ -58,7 +59,8 @@ const App = () => {
   return (
     <div className='App'>
       <ErrorBoundary>
-        <MainReactHooks/>
+        <MainRedux/>
+        {/* <MainReactHooks/> */}
         {/* <MainAxios/> */}
         {/* <ContextMain/> */}
         {/* <ClickCounter name="Hassan"/>
