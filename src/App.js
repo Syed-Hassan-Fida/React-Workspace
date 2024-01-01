@@ -59,8 +59,8 @@ const App = () => {
   return (
     <div className='App'>
       <ErrorBoundary>
-        <MainRedux/>
-        {/* <MainReactHooks/> */}
+        {/* <MainRedux/> */}
+        <MainReactHooks/>
         {/* <MainAxios/> */}
         {/* <ContextMain/> */}
         {/* <ClickCounter name="Hassan"/>
