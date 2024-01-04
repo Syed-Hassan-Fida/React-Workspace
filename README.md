@@ -12,6 +12,6 @@ lifecycle hooks
 portals
 Error bounmdaries
 render Props
-context
+contextApi
     React.createContext()
     comes with => provider and consumer react component
