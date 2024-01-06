@@ -15,17 +15,25 @@ const reducer = (state, action) => {
 }
 
 
-const CountOne = () => {
+const CountThree = () => {
     const [count, dispatch] = useReducer(reducer, initialState)
+    const [countTwo, dispatchTwo] = useReducer(reducer, initialState)
+
     return (
         <div>
-            <h2>Simple Reducer</h2>
+            <h2>Multiple Reducers</h2>
             <p>Count -- {count}</p>
             <button onClick={() => dispatch('increment')}>Increment</button>
             <button onClick={() => dispatch('decrement')}>Derement</button>
             <button onClick={() => dispatch('reset')}>Reset</button>
+            <div>
+                <p>Count -- {countTwo}</p>
+                <button onClick={() => dispatchTwo('increment')}>Increment</button>
+                <button onClick={() => dispatchTwo('decrement')}>Derement</button>
+                <button onClick={() => dispatchTwo('reset')}>Reset</button>
+            </div>
         </div>
     )
 }
 
-export default CountOne
+export default CountThree
