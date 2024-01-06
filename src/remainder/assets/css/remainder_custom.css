@@ -1,0 +1,42 @@
+.header-a{
+    max-width: 100%;
+    margin: auto;
+}
+
+.remainder-logo{
+    font-family: monospace;
+    font-weight: bolder;
+    font-size: larger;
+    font-style: italic;
+}
+
+.remainder{
+    background-color: rgb(231 230 230);
+    border-radius: 10px;
+}
+
+.priority-high{
+    background-color: red;
+    padding: 20px 50px 10px 50px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.priority-medium{
+    background-color: green;
+    padding: 20px 50px 10px 50px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.priority-low{
+    background-color: yellow;
+    padding: 20px 50px 10px 50px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.remainder-icon{
+    cursor: pointer;
+    vertical-align: text-bottom; 
+}

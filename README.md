@@ -15,3 +15,7 @@ render Props
 contextApi
     React.createContext()
     comes with => provider and consumer react component
+
+the difference between useCallBack and useMemo is
+    useMemo cach the results and then it can be stored in a var
+    useCallBack cache the function itself

@@ -14,6 +14,7 @@ import MainReactHooks from './components/ReactHooks/MainReactHooks';
 import MainRedux from './components/ReduxComponents/MainRedux';
 import MainUseReducer from './components/useReduer/MainUseReducer';
 import MainUseCallBack from './components/UseCallBack/MainUseCallBack';
+import Dashboard from './remainder/Dashboard';
 
 // Higher Order Component function
 const withLogging = (WrappedComponent) => {
@@ -59,9 +60,10 @@ const App = () => {
     setModalVisible(false);
   };
   return (
-    <div className='App'>
-      <ErrorBoundary>
-        <MainUseCallBack/>
+    <div>
+      <Dashboard/>
+      {/* <ErrorBoundary> */}
+        {/* <MainUseCallBack/> */}
         {/* <MainUseReducer/> */}
         {/* <MainRedux/> */}
         {/* <MainReactHooks/> */}
@@ -83,7 +85,7 @@ const App = () => {
         {/* <ParentComponent /> */}
         {/* <h1>Higher Order Component Example</h1> */}
         {/* <MyComponentWithLogging /> */}
-      </ErrorBoundary>
+      {/* </ErrorBoundary> */}
     </div>
   );
 };
