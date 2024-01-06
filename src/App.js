@@ -13,6 +13,7 @@ import MainAxios from './components/axiosRequests/MainAxios';
 import MainReactHooks from './components/ReactHooks/MainReactHooks';
 import MainRedux from './components/ReduxComponents/MainRedux';
 import MainUseReducer from './components/useReduer/MainUseReducer';
+import MainUseCallBack from './components/UseCallBack/MainUseCallBack';
 
 // Higher Order Component function
 const withLogging = (WrappedComponent) => {
@@ -60,7 +61,8 @@ const App = () => {
   return (
     <div className='App'>
       <ErrorBoundary>
-        <MainUseReducer/>
+        <MainUseCallBack/>
+        {/* <MainUseReducer/> */}
         {/* <MainRedux/> */}
         {/* <MainReactHooks/> */}
         {/* <MainAxios/> */}
