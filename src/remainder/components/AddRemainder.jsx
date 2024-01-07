@@ -4,12 +4,12 @@ import RemainderList from './RemainderList'
 const AddRemainder = () => {
     return (
         <div className='container mt-4'>
-            <h4>Add Remainder
+            <h4 style={{ textAlign: "left" }}>
                 <span className="material-icons ms-2 remainder-icon">
                     notification_add
                 </span>
             </h4>
-            <RemainderList/>
+            <RemainderList />
         </div>
     )
 }

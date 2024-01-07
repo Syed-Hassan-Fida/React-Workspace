@@ -7,6 +7,7 @@ const Dashboard = () => {
         <div>
             <Header />
             <AddRemainder />
+            
         </div>
     )
 }

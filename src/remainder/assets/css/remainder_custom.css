@@ -2,13 +2,13 @@
     max-width: 100%;
     margin: auto;
 }
-
+/* 
 .remainder-logo{
     font-family: monospace;
     font-weight: bolder;
     font-size: larger;
     font-style: italic;
-}
+} */
 
 .remainder{
     background-color: rgb(231 230 230);
@@ -16,22 +16,22 @@
 }
 
 .priority-high{
-    background-color: red;
-    padding: 20px 50px 10px 50px;
+    background-color: #FF9800;
+    padding: 10px 10px 6px 10px;
     border-radius: 10px;
     cursor: pointer;
 }
 
 .priority-medium{
-    background-color: green;
-    padding: 20px 50px 10px 50px;
+    background-color: #9ADE7B;
+     padding: 10px 10px 6px 10px;
     border-radius: 10px;
     cursor: pointer;
 }
 
 .priority-low{
-    background-color: yellow;
-    padding: 20px 50px 10px 50px;
+    background-color: #cfcfcb;
+     padding: 10px 10px 6px 10px;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -39,4 +39,13 @@
 .remainder-icon{
     cursor: pointer;
     vertical-align: text-bottom; 
+}
+
+.lists{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bg-light {
+    background-color: rgb(231 230 230)!important;
 }

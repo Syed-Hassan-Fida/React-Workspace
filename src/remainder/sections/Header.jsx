@@ -7,7 +7,6 @@ const Header = () => {
         <React.Fragment>
             <nav className="navbar navbar-light bg-light">
                 <div className="container">
-                    <span className='remainder-logo'>Remainder App</span>
                     <a className="navbar-brand header-a" href="/" >
                         <img src={RemainderImage} alt="" width="70" height="70" />
                     </a>
