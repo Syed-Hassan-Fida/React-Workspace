@@ -49,3 +49,13 @@
 .bg-light {
     background-color: rgb(231 230 230)!important;
 }
+
+.cancel-button{
+    text-align: right;
+    cursor: pointer;
+}
+
+.submit-button{
+    width: 100%;
+    margin: auto;
+}
