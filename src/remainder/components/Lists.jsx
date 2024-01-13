@@ -1,6 +1,20 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { getAllData } from '../database/db'
 
 const Lists = () => {
+    const [reminderList, setReminderList] = useState({})
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getAllData();
+            setReminderList(data)
+            console.log('All Data:', data);
+        };
+
+        fetchData();
+    }, []);
+    console.log('reminderList', reminderList);
+
     return (
         <div>
             <div className='priority-high m-3 lists'>
@@ -57,6 +71,21 @@ const Lists = () => {
                     </span>
                 </div>
             </div>
+
+            { reminderList ? 
+                reminderList.map((value, key)=>{
+                    return (
+                        <div className='{value.priority == "low" priority-low ? null  } m-3 lists' key={key}>
+                            <div>Task/Event: ABC
+                                <span>Desc: {value.name} </span>
+                                <span>Date: {value.date} </span>
+                                <span>Time: {value.time} </span>
+                            </div>
+                        </div>
+                    )
+                })
+                : null
+            }
         </div>
     )
 }

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import ReactDOM from 'react-dom';
-import { addData, getAllData } from '../../database/db'
+import { addData } from '../../database/db'
 import '../../../components/assets/model.css';
 
 const CreateModel = ({ onClose }) => {
@@ -33,15 +33,6 @@ const CreateModel = ({ onClose }) => {
             priority: ""
         });
     };
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const data = await getAllData();
-    //         console.log('All Data:', data);
-    //     };
-
-    //     fetchData();
-    // }, []);
 
     return ReactDOM.createPortal(
         <div className="modal-overlay" onClick={onClose}>
