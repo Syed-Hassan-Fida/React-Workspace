@@ -19,3 +19,7 @@ contextApi
 the difference between useCallBack and useMemo is
     useMemo cach the results and then it can be stored in a var
     useCallBack cache the function itself
+
+
+remainder app task
+    covers all basic concepts
