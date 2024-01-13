@@ -10,13 +10,13 @@ const Lists = () => {
                     <span>Priority: Hight</span>
                 </div>
                 <div>
-                    <span class="material-icons" style={{ color: 'gray', marginRight: '5px' }}>
+                    <span className="material-icons" style={{ color: 'gray', marginRight: '5px' }}>
                         visibility
                     </span>
-                    <span class="material-icons" style={{ color: 'green', marginRight: '5px' }}>
+                    <span className="material-icons" style={{ color: 'green', marginRight: '5px' }}>
                         edit
                     </span>
-                    <span class="material-icons" style={{ color: 'red' }}>
+                    <span className="material-icons" style={{ color: 'red' }}>
                         delete
                     </span>
                 </div>
@@ -28,13 +28,13 @@ const Lists = () => {
                     <span>Priority: Medium</span>
                 </lists>
                 <div>
-                    <span class="material-icons" style={{ color: 'gray', marginRight: '5px' }}>
+                    <span className="material-icons" style={{ color: 'gray', marginRight: '5px' }}>
                         visibility
                     </span>
-                    <span class="material-icons" style={{ color: 'green', marginRight: '5px' }}>
+                    <span className="material-icons" style={{ color: 'green', marginRight: '5px' }}>
                         edit
                     </span>
-                    <span class="material-icons" style={{ color: 'red' }}>
+                    <span className="material-icons" style={{ color: 'red' }}>
                         delete
                     </span>
                 </div>
@@ -46,13 +46,13 @@ const Lists = () => {
                     <span>Priority: Low</span>
                 </div>
                 <div>
-                    <span class="material-icons" style={{ color: 'gray', marginRight: '5px' }}>
+                    <span className="material-icons" style={{ color: 'gray', marginRight: '5px' }}>
                         visibility
                     </span>
-                    <span class="material-icons" style={{ color: 'green', marginRight: '5px' }}>
+                    <span className="material-icons" style={{ color: 'green', marginRight: '5px' }}>
                         edit
                     </span>
-                    <span class="material-icons" style={{ color: 'red' }}>
+                    <span className="material-icons" style={{ color: 'red' }}>
                         delete
                     </span>
                 </div>
