@@ -24,7 +24,7 @@ const Form = () => {
 
     const handleFormSubmit = (e) => {
         alert(`${formData.name}`)
-        e.prevent.default()
+        e.preventDefault()
     }
 
     useEffect(()=>{
