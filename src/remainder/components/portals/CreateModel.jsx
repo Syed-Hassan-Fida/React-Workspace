@@ -51,6 +51,7 @@ const CreateModel = ({ onClose }) => {
                                 name="name"
                                 value={formData.name}
                                 onChange={handleOnChange}
+                                required
                             />
                         </div>
                         <div className="mb-3">
@@ -59,6 +60,7 @@ const CreateModel = ({ onClose }) => {
                                 name="description"
                                 value={formData.description}
                                 onChange={handleOnChange}
+                                required
                             />
                         </div>
                         <div className="mb-3">
@@ -67,6 +69,7 @@ const CreateModel = ({ onClose }) => {
                                 name="date"
                                 value={formData.date}
                                 onChange={handleOnChange}
+                                required
                             />
                         </div>
                         <div className="mb-3">
@@ -75,6 +78,7 @@ const CreateModel = ({ onClose }) => {
                                 name="time"
                                 value={formData.time}
                                 onChange={handleOnChange}
+                                required
                             />
                         </div>
                         <div className="mb-3">
@@ -82,6 +86,7 @@ const CreateModel = ({ onClose }) => {
                                 name='priority'
                                 value={formData.priority}
                                 onChange={handleOnChange}
+                                required
                             >
                                 <option default>Select Task Priority</option>
                                 <option value="high">High</option>

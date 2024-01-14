@@ -17,14 +17,24 @@ const AddRemainder = () => {
         setModalVisible(false);
     };
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const data = await getAllData();
-            setReminderList(data)
-            console.log('All Data:', data);
-        };
+    const handleSubmission = () => {
         fetchData();
-    }, [reminderList]);
+    };
+
+    const fetchData = async () => {
+        const data = await getAllData();
+        setReminderList(data)
+        console.log('All Data:', data);
+    };
+
+    const handleDelete = async (id) => {
+        await deleteData(id);
+        await fetchData();
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
 
     return (
         <div className='container mt-4'>
@@ -34,11 +44,11 @@ const AddRemainder = () => {
                 </span>
             </h4>
             {modalVisible && (
-                <CreateModel onClose={closeModal} />
+                <CreateModel onClose={() => { closeModal(); handleSubmission(); }} />
             )}
-            <RemainderList reminderList={reminderList} deleteData={deleteData} />
+            <RemainderList reminderList={reminderList} handleDelete={handleDelete} />
         </div>
     )
 }
 
-export default AddRemainder
+export default React.memo(AddRemainder)

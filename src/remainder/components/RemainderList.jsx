@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RemainderList = ({ reminderList, deleteData }) => {
+const RemainderList = ({ reminderList, handleDelete }) => {
   const currentTime = new Date();
   const futureTime = new Date(currentTime.getTime() + 3 * 60000);
   const currentdDateTime = currentTime.toLocaleString(undefined, {
@@ -19,10 +19,6 @@ const RemainderList = ({ reminderList, deleteData }) => {
     minute: 'numeric',
     second: 'numeric',
   });
-
-  const handleDelete = async (id) => {
-    await deleteData(id);
-  };
 
   return (
     <div className='d-flex flex-wrap flex-column align-items-left p-2 justify-content-left remainder pt-4 pb-4'>
