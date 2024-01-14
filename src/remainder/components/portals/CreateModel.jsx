@@ -32,6 +32,8 @@ const CreateModel = ({ onClose }) => {
             time: "",
             priority: ""
         });
+
+        onClose()
     };
 
     return ReactDOM.createPortal(

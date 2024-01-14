@@ -28,5 +28,13 @@ const getAllData = async () => {
   const store = tx.objectStore(storeName);
   return store.getAll();
 };
+const deleteData = async (id) => {
+  const db = await openDatabase();
+  const tx = db.transaction(storeName, 'readwrite');
+  const store = tx.objectStore(storeName);
 
-export { addData, getAllData };
+  await store.delete(id);
+  await tx.done;
+};
+
+export { addData, getAllData, deleteData };
