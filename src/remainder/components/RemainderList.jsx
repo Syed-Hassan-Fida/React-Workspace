@@ -1,24 +1,6 @@
 import React from 'react'
 
 const RemainderList = ({ reminderList, handleDelete }) => {
-  const currentTime = new Date();
-  const futureTime = new Date(currentTime.getTime() + 3 * 60000);
-  const currentdDateTime = currentTime.toLocaleString(undefined, {
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-  });
-  const formattedDateTime = futureTime.toLocaleString(undefined, {
-    year: 'numeric',
-    month: 'numeric',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-  });
 
   return (
     <div className='d-flex flex-wrap flex-column align-items-left p-2 justify-content-left remainder pt-4 pb-4'>
@@ -26,12 +8,25 @@ const RemainderList = ({ reminderList, handleDelete }) => {
       <div>
         {Object.keys(reminderList).length !== 0 ?
           reminderList.map((value, key) => {
+            const currentTime = new Date();
+            const taskTime = new Date(`${value.date}T${value.time}`);
+            const isTaskOverdue = taskTime < currentTime;
+
+            const priorityClass =
+              value.priority === "low" ? 'priority-low' :
+                value.priority === "medium" ? 'priority-medium' :
+                  value.priority === "high" ? 'priority-high' : '';
+
+            const borderStyle = isTaskOverdue ? { borderLeft: "4px solid red" } : {};
+
             return (
-              <div className={`${value.priority === "low" ? 'priority-low m-3 lists' : ''
-                } ${value.priority === "medium" ? 'priority-medium m-3 lists' : ''
-                }${value.priority === "high" ? 'priority-high m-3 lists' : ''
-                }`} key={key}>
-                <div>Task/Event: ABC
+              <div
+                className={`m-3 lists ${priorityClass}`}
+                style={borderStyle}
+                key={key}
+              >
+                <div>
+                  <span>Task/Event: ABC</span>
                   <span>Desc: {value.name} </span>
                   <span>Date: {value.date} </span>
                   <span>Time: {value.time} </span>
@@ -48,13 +43,15 @@ const RemainderList = ({ reminderList, handleDelete }) => {
                   </span>
                 </div>
               </div>
-            )
+            );
           })
-          : <div className="m-3 lists">
+          :
+          <div className="m-3 lists">
             <p>No Tasks Yet...</p>
           </div>
         }
       </div>
+
     </div>
   )
 }
