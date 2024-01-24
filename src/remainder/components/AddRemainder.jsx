@@ -35,7 +35,7 @@ const AddRemainder = () => {
 
     const checkAlert = (data) => {
         const now = new Date();
-        const futureTime = new Date(now.getTime() + 2 * 60000); // 2 minutes later
+        const futureTime = new Date(now.getTime() + 2 * 60000);
 
         const showAlert = data.some((item) => {
             const itemTime = new Date(`${item.date}T${item.time}`);
