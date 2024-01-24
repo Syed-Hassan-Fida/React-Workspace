@@ -1,61 +1,60 @@
-.header-a{
+.header-a {
     max-width: 100%;
     margin: auto;
 }
-/* 
-.remainder-logo{
-    font-family: monospace;
-    font-weight: bolder;
-    font-size: larger;
-    font-style: italic;
-} */
 
-.remainder{
+.remainder {
     background-color: rgb(231 230 230);
     border-radius: 10px;
 }
 
-.priority-high{
+.priority-high {
     background-color: #FF9800;
     padding: 10px 10px 6px 10px;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.priority-medium{
+.priority-medium {
     background-color: #9ADE7B;
-     padding: 10px 10px 6px 10px;
+    padding: 10px 10px 6px 10px;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.priority-low{
+.priority-low {
     background-color: #cfcfcb;
-     padding: 10px 10px 6px 10px;
+    padding: 10px 10px 6px 10px;
     border-radius: 10px;
     cursor: pointer;
 }
 
-.remainder-icon{
+.remainder-icon {
     cursor: pointer;
-    vertical-align: text-bottom; 
+    vertical-align: text-bottom;
 }
 
-.lists{
+.lists {
     display: flex;
     justify-content: space-between;
 }
 
 .bg-light {
-    background-color: rgb(231 230 230)!important;
+    background-color: rgb(231 230 230) !important;
 }
 
-.cancel-button{
+.cancel-button {
     text-align: right;
     cursor: pointer;
 }
 
-.submit-button{
+.submit-button {
     width: 100%;
     margin: auto;
+}
+
+.remainder-icon {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
 }

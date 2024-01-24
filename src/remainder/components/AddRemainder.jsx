@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import RemainderList from './RemainderList';
 import CreateModel from './portals/CreateModel';
 import { getAllData, deleteData } from '../database/db';
@@ -15,9 +15,9 @@ const AddRemainder = () => {
         setModalVisible(false);
     };
 
-    const handleSubmission = () => {
+    const handleSubmission = useCallback(() => {
         fetchData();
-    };
+    }, [reminderList])
 
     const fetchData = async () => {
         const data = await getAllData();
@@ -35,7 +35,7 @@ const AddRemainder = () => {
 
     return (
         <div className='container mt-4'>
-            <h4 style={{ textAlign: 'left', display: 'flex', justifyContent: 'space-between' }}>
+            <h4 className='remainder-icon'>
                 <span className='material-icons ms-2 remainder-icon' onClick={openModal}>
                     notification_add
                 </span>
