@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { viewData, editData } from '../../database/db';
 import '../../../components/assets/model.css';
 
-const EditModal = ({ onClose, id }) => {
+const EditModal = ({ onClose, id, handleSubmission }) => {
     const modalRoot = document.getElementById('modal-edit');
     const [taskData, setTaskData] = useState('');
     const [formData, setFormData] = useState({
@@ -51,6 +51,7 @@ const EditModal = ({ onClose, id }) => {
             time: '',
             priority: '',
         });
+        handleSubmission();
         onClose();
     };
 

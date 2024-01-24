@@ -25,7 +25,7 @@ const reducer = (state, action) => {
 
 const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  const [rerenderFlag, setRerenderFlag] = useState(false);
+  const [countdowns, setCountdowns] = useState({});
 
   const openModal = (type, id) => {
     dispatch({ type: `OPEN_${type}_MODAL`, id });
@@ -33,21 +33,50 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
 
   const closeModal = (type) => {
     dispatch({ type: `CLOSE_${type}_MODAL` });
-    setRerenderFlag((prevFlag) => !prevFlag);
   };
 
   useEffect(() => {
     handleSubmission();
-  }, [rerenderFlag]);
+  }, []);
+
+  useEffect(() => {
+    const intervalIds = {};
+
+    reminderList.forEach((value) => {
+      const currentTime = new Date();
+      const taskTime = new Date(`${value.date}T${value.time}`);
+      const isTaskOverdue = taskTime < currentTime;
+
+      if (!isTaskOverdue) {
+        const intervalId = setInterval(() => {
+          const remainingTime = taskTime - new Date();
+          if (remainingTime <= 0) {
+            clearInterval(intervalId);
+          }
+          setCountdowns((prevCountdowns) => ({
+            ...prevCountdowns,
+            [value.id]: remainingTime,
+          }));
+        }, 1000);
+
+        intervalIds[value.id] = intervalId;
+      }
+    });
+
+    return () => {
+      Object.values(intervalIds).forEach((intervalId) => clearInterval(intervalId));
+    };
+  }, [reminderList]);
 
   const { viewModalVisible, editModalVisible, selectedId } = state;
 
   return (
-    <div className='d-flex flex-wrap flex-column align-items-left p-2 justify-content-left remainder pt-4 pb-4'>
+    <div className='d-flex flex-wrap flex-column p-2 justify-content-left remainder pt-4 pb-4'>
       <h1 className='m-3'>Upcoming Reminders</h1>
       <div>
         {reminderList.length !== 0 ? (
           reminderList.map((value, key) => {
+            // const isTaskOverdue = countdowns[value.id] <= 0;
             const currentTime = new Date();
             const taskTime = new Date(`${value.date}T${value.time}`);
             const isTaskOverdue = taskTime < currentTime;
@@ -60,9 +89,9 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
             const borderStyle = isTaskOverdue ? { borderLeft: '4px solid red' } : {};
             const taskExpired = isTaskOverdue ? 'Task Expired' : {};
 
-            const showCountdownAlert = !isTaskOverdue && taskTime - currentTime <= 2 * 60 * 1000;
+            const showCountdownAlert = !isTaskOverdue && countdowns[value.id] <= 2 * 60 * 1000;
 
-            const countdownSeconds = Math.ceil((taskTime - currentTime) / 1000);
+            const countdownSeconds = Math.ceil(countdowns[value.id] / 1000);
             const countdownMinutes = Math.floor(countdownSeconds / 60);
             const countdownRemainingSeconds = countdownSeconds % 60;
 
@@ -89,7 +118,7 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
                   </div>
                 </div>
                 {showCountdownAlert && (
-                  <p className='alert alert-danger' role='alert'>
+                  <p className='m-3 p-2 alert-danger' role='alert'>
                     Countdown: {countdownMinutes} minutes {countdownRemainingSeconds} seconds
                   </p>
                 )}
@@ -102,8 +131,8 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
           </div>
         )}
       </div>
-      {viewModalVisible && <ViewModal onClose={() => closeModal('VIEW')} id={selectedId} />}
-      {editModalVisible && <EditModal onClose={() => { closeModal('EDIT'); }} id={selectedId} />}
+      {viewModalVisible && <ViewModal onClose={() => {closeModal('VIEW'); }} id={selectedId} handleSubmission={handleSubmission} />}
+      {editModalVisible && <EditModal onClose={() => { closeModal('EDIT'); }} id={selectedId} handleSubmission={handleSubmission} />}
     </div>
   );
 };

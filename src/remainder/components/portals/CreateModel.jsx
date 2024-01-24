@@ -36,6 +36,8 @@ const CreateModel = ({ onClose }) => {
         onClose()
     };
 
+    const isFormValid = formData.name && formData.description && formData.date && formData.time && formData.priority;
+
     return ReactDOM.createPortal(
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -86,7 +88,6 @@ const CreateModel = ({ onClose }) => {
                                 name='priority'
                                 value={formData.priority}
                                 onChange={handleOnChange}
-                                required
                             >
                                 <option default>Select Task Priority</option>
                                 <option value="high">High</option>
@@ -94,7 +95,7 @@ const CreateModel = ({ onClose }) => {
                                 <option value="low">Low</option>
                             </select>
                         </div>
-                        <button type="submit" className="btn btn-primary submit-button">Submit</button>
+                        <button type="submit" className="btn btn-primary submit-button" disabled={!isFormValid}>Submit</button>
                     </form>
                 </div>
             </div>
