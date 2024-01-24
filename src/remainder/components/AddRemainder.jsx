@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import RemainderList from './RemainderList';
 import CreateModel from './portals/CreateModel';
 import { getAllData, deleteData } from '../database/db';
@@ -32,10 +32,6 @@ const AddRemainder = () => {
         await deleteData(id);
         await fetchData();
     };
-
-    useEffect(() => {
-        fetchData();
-    }, []);
 
     const checkAlert = (data) => {
         const now = new Date();
@@ -72,52 +68,50 @@ const AddRemainder = () => {
 
     useEffect(() => {
         fetchData();
-        // const interval = setInterval(() => {
-        //     fetchData();
-        // }, 60000);
-        // return () => clearInterval(interval);
     }, []);
 
     useEffect(() => {
         let countdownInterval;
-    
+
         if (showAlert && (remainingTime.minutes > 0 || remainingTime.seconds > 0)) {
             countdownInterval = setInterval(() => {
                 setRemainingTime((prevTime) => {
-                    console.log("prevTime.minutes", prevTime.minutes, "prevTime.seconds", prevTime.seconds )
                     if (prevTime.minutes === 0 && prevTime.seconds === 1) {
                         clearInterval(countdownInterval);
                         setShowAlert(false);
-                        console.log("check")
                         return { minutes: 0, seconds: 0 };
                     }
-    
+
                     const newSeconds = prevTime.seconds === 0 ? 59 : prevTime.seconds - 1;
                     const newMinutes = prevTime.seconds === 0 ? prevTime.minutes - 1 : prevTime.minutes;
-    
+
                     return { minutes: newMinutes, seconds: newSeconds };
                 });
             }, 1000);
         }
-    
+
         return () => clearInterval(countdownInterval);
     }, [showAlert, remainingTime]);
-    console.log(showAlert, remainingTime)
+
+    const alertMessage = useMemo(() => (
+        showAlert && (
+            <span className='alert alert-danger' style={{ padding: '0.3rem 0.3rem !important', marginBottom: '5px' }} role='alert'>
+                {' '}
+                For Task {taskName} Remaining Time is {String(remainingTime.minutes).padStart(2, '0')}:{String(remainingTime.seconds).padStart(2, '0')}{' '}
+            </span>
+        )
+    ), [showAlert, taskName, remainingTime]);
+
     return (
         <div className='container mt-4'>
             <h4 style={{ textAlign: 'left', display: 'flex', justifyContent: 'space-between' }}>
                 <span className='material-icons ms-2 remainder-icon' onClick={openModal}>
                     notification_add
                 </span>
-                {showAlert ? (
-                    <span className='alert alert-danger' style={{ padding: '0.3rem 0.3rem !important', marginBottom: '5px' }} role='alert'>
-                        {' '}
-                        For Task {taskName} Remaining Time is {String(remainingTime.minutes).padStart(2, '0')}:{String(remainingTime.seconds).padStart(2, '0')}{' '}
-                    </span>
-                ) : null}
+                {alertMessage}
             </h4>
             {modalVisible && <CreateModel onClose={() => { closeModal(); handleSubmission(); }} />}
-            <RemainderList reminderList={reminderList} handleDelete={handleDelete} />
+            <RemainderList reminderList={reminderList} handleDelete={handleDelete} handleSubmission={handleSubmission} />
         </div>
     );
 };
