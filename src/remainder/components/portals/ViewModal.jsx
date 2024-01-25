@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom';
 import { viewData } from '../../database/db'
+import { priorityClass } from '../../helperFunctions';
 
 
 const ViewModal = ({ onClose, id }) => {
@@ -20,10 +21,7 @@ const ViewModal = ({ onClose, id }) => {
         fetchData()
     }, [])
 
-    const priorityClass =
-        taskData.priority === "low" ? 'priority-low' :
-            taskData.priority === "medium" ? 'priority-medium' :
-                taskData.priority === "high" ? 'priority-high' : ''
+    const priority_Class = priorityClass(taskData)
 
     return ReactDOM.createPortal(
         <div className="modal-overlay" onClick={onClose}>
@@ -34,7 +32,7 @@ const ViewModal = ({ onClose, id }) => {
                 <div className='container'>
                     <h2>View Task</h2>
                     <div className="card text-center">
-                        <div className={`card-header ${priorityClass}`} >
+                        <div className={`card-header ${priority_Class}`} >
                             <strong>Priority: {taskData.priority}</strong>
                         </div>
                         <div className="card-body">

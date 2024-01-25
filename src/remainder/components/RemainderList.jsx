@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer, useState } from 'react';
 import ViewModal from './portals/ViewModal';
 import EditModal from './portals/EditModal';
+import { priorityClass } from '../helperFunctions';
 
 const initialState = {
   viewModalVisible: false,
@@ -21,12 +22,6 @@ const reducer = (state, action) => {
     default:
       return state;
   }
-};
-
-const priorityClassMap = {
-  low: 'priority-low',
-  medium: 'priority-medium',
-  high: 'priority-high',
 };
 
 const formatCountdown = (countdown) => {
@@ -93,7 +88,7 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
             const taskTime = new Date(`${value.date}T${value.time}`);
             const isTaskOverdue = taskTime < currentTime;
 
-            const priorityClass = priorityClassMap[value.priority] || '';
+            const priority_Class = priorityClass(value)
 
             const borderStyle = isTaskOverdue ? { borderLeft: '4px solid red' } : {};
             const taskExpired = isTaskOverdue ? 'Task Expired' : '';
@@ -108,7 +103,7 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
 
             return (
               <div key={value.id} >
-                <div className={`m-3 lists ${priorityClass}`} style={borderStyle} title={taskExpired}>
+                <div className={`m-3 lists ${priority_Class}`} style={borderStyle} title={taskExpired}>
                   <div>
                     <span>Task: {value.name}</span>
                   </div>
