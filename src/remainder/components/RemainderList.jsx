@@ -23,6 +23,19 @@ const reducer = (state, action) => {
   }
 };
 
+const priorityClassMap = {
+  low: 'priority-low',
+  medium: 'priority-medium',
+  high: 'priority-high',
+};
+
+const formatCountdown = (countdown) => {
+  const countdownSeconds = Math.ceil(countdown / 1000);
+  const countdownMinutes = Math.floor(countdownSeconds / 60);
+  const countdownRemainingSeconds = countdownSeconds % 60;
+  return `${countdownMinutes} minutes ${countdownRemainingSeconds} seconds`;
+};
+
 const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [countdowns, setCountdowns] = useState({});
@@ -75,33 +88,27 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
       <h1 className='m-3'>Upcoming Reminders</h1>
       <div>
         {reminderList.length !== 0 ? (
-          reminderList.map((value, key) => {
-            // const isTaskOverdue = countdowns[value.id] <= 0;
+          reminderList.map((value) => {
             const currentTime = new Date();
             const taskTime = new Date(`${value.date}T${value.time}`);
             const isTaskOverdue = taskTime < currentTime;
 
-            const priorityClass =
-              value.priority === 'low' ? 'priority-low' :
-                value.priority === 'medium' ? 'priority-medium' :
-                  value.priority === 'high' ? 'priority-high' : '';
+            const priorityClass = priorityClassMap[value.priority] || '';
 
             const borderStyle = isTaskOverdue ? { borderLeft: '4px solid red' } : {};
-            const taskExpired = isTaskOverdue ? 'Task Expired' : {};
+            const taskExpired = isTaskOverdue ? 'Task Expired' : '';
 
-            const showCountdownAlert = !isTaskOverdue && countdowns[value.id] <= 2 * 60 * 1000;
+            const countdownThreshold = {
+              low: 2 * 60 * 1000,
+              medium: 3 * 60 * 1000,
+              high: 4 * 60 * 1000,
+            }[value.priority] || 2 * 60 * 1000;
 
-            const countdownSeconds = Math.ceil(countdowns[value.id] / 1000);
-            const countdownMinutes = Math.floor(countdownSeconds / 60);
-            const countdownRemainingSeconds = countdownSeconds % 60;
+            const showCountdownAlert = !isTaskOverdue && countdowns[value.id] <= countdownThreshold;
 
             return (
-              <React.Fragment key={key}>
-                <div
-                  className={`m-3 lists ${priorityClass}`}
-                  style={borderStyle}
-                  title={taskExpired}
-                >
+              <div key={value.id} >
+                <div className={`m-3 lists ${priorityClass}`} style={borderStyle} title={taskExpired}>
                   <div>
                     <span>Task: {value.name}</span>
                   </div>
@@ -118,11 +125,11 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
                   </div>
                 </div>
                 {showCountdownAlert && (
-                  <p className='m-3 p-2 alert-danger' role='alert'>
-                    Countdown: {countdownMinutes} minutes {countdownRemainingSeconds} seconds
+                  <p className='m-3 p-2 alert-danger' style={{ width: "fit-content" }} role='alert'>
+                    Countdown: {formatCountdown(countdowns[value.id])}
                   </p>
                 )}
-              </React.Fragment>
+              </div>
             );
           })
         ) : (
@@ -131,7 +138,7 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
           </div>
         )}
       </div>
-      {viewModalVisible && <ViewModal onClose={() => {closeModal('VIEW'); }} id={selectedId} handleSubmission={handleSubmission} />}
+      {viewModalVisible && <ViewModal onClose={() => { closeModal('VIEW'); }} id={selectedId} handleSubmission={handleSubmission} />}
       {editModalVisible && <EditModal onClose={() => { closeModal('EDIT'); }} id={selectedId} handleSubmission={handleSubmission} />}
     </div>
   );

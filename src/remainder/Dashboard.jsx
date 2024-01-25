@@ -4,11 +4,10 @@ import AddRemainder from './components/AddRemainder'
 
 const Dashboard = () => {
     return (
-        <div>
+        <React.Fragment>
             <Header />
             <AddRemainder />
-            
-        </div>
+        </React.Fragment>
     )
 }
 
