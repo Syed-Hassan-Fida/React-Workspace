@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, useState } from 'react';
 import ViewModal from './portals/ViewModal';
 import EditModal from './portals/EditModal';
-import { priorityClass } from '../helperFunctions';
+import { priorityClass, formatCountdown, taskOverdue } from '../helperFunctions';
 
 const initialState = {
   viewModalVisible: false,
@@ -24,13 +24,6 @@ const reducer = (state, action) => {
   }
 };
 
-const formatCountdown = (countdown) => {
-  const countdownSeconds = Math.ceil(countdown / 1000);
-  const countdownMinutes = Math.floor(countdownSeconds / 60);
-  const countdownRemainingSeconds = countdownSeconds % 60;
-  return `${countdownMinutes} minutes ${countdownRemainingSeconds} seconds`;
-};
-
 const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const [countdowns, setCountdowns] = useState({});
@@ -51,9 +44,8 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
     const intervalIds = {};
 
     reminderList.forEach((value) => {
-      const currentTime = new Date();
       const taskTime = new Date(`${value.date}T${value.time}`);
-      const isTaskOverdue = taskTime < currentTime;
+      const isTaskOverdue = taskOverdue(value);
 
       if (!isTaskOverdue) {
         const intervalId = setInterval(() => {
@@ -84,9 +76,7 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
       <div>
         {reminderList.length !== 0 ? (
           reminderList.map((value) => {
-            const currentTime = new Date();
-            const taskTime = new Date(`${value.date}T${value.time}`);
-            const isTaskOverdue = taskTime < currentTime;
+            const isTaskOverdue = taskOverdue(value);
 
             const priority_Class = priorityClass(value)
 
