@@ -15,6 +15,7 @@ import MainRedux from './components/ReduxComponents/MainRedux';
 import MainUseReducer from './components/useReduer/MainUseReducer';
 import MainUseCallBack from './components/UseCallBack/MainUseCallBack';
 import Dashboard from './remainder/Dashboard';
+import MainUseMemoHook from './components/useMemoHook/MainUseMemoHook';
 
 // Higher Order Component function
 const withLogging = (WrappedComponent) => {
@@ -61,7 +62,8 @@ const App = () => {
   };
   return (
     <div>
-      <Dashboard/>
+      <MainUseMemoHook/>
+      {/* <Dashboard/> */}
       {/* <ErrorBoundary> */}
         {/* <MainUseCallBack/> */}
         {/* <MainUseReducer/> */}

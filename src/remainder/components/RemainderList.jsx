@@ -72,7 +72,7 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
 
   return (
     <div className='d-flex flex-wrap flex-column p-2 justify-content-left remainder pt-4 pb-4'>
-      <h1 className='m-3'>Upcoming Reminders</h1>
+      <h1 className='m-3'>Reminder List</h1>
       <div>
         {reminderList.length !== 0 ? (
           reminderList.map((value) => {
