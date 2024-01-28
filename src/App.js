@@ -62,8 +62,8 @@ const App = () => {
   };
   return (
     <div>
-      <MainUseMemoHook/>
-      {/* <Dashboard/> */}
+      {/* <MainUseMemoHook/> */}
+      <Dashboard/>
       {/* <ErrorBoundary> */}
         {/* <MainUseCallBack/> */}
         {/* <MainUseReducer/> */}
