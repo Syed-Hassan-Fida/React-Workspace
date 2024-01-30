@@ -95,8 +95,16 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
               <div key={value.id} >
                 <div className={`m-3 lists ${priority_Class}`} style={borderStyle} title={taskExpired}>
                   <div>
-                    <span>Task: {value.name}</span>
+                    <span>{value.name.toUpperCase()}</span>
                   </div>
+                  <div className='ellipsis-text'>
+                    <span>Description: {value.description}</span>
+                  </div>
+                  {showCountdownAlert && (
+                    <span style={{ width: "fit-content" }} role='alert'>
+                      Countdown: {formatCountdown(countdowns[value.id])}
+                    </span>
+                  )}
                   <div>
                     <span className='material-icons' style={{ color: 'gray', marginRight: '5px' }} onClick={() => openModal('VIEW', value.id)}>
                       visibility
@@ -109,11 +117,7 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
                     </span>
                   </div>
                 </div>
-                {showCountdownAlert && (
-                  <p className='m-3 p-2 alert-danger' style={{ width: "fit-content" }} role='alert'>
-                    Countdown: {formatCountdown(countdowns[value.id])}
-                  </p>
-                )}
+
               </div>
             );
           })

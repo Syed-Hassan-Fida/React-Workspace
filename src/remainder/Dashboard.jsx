@@ -7,8 +7,8 @@ const Dashboard = () => {
     return (
         <React.Fragment>
             <Header />
-            <Login/>
-            {/* <AddRemainder /> */}
+            {/* <Login/> */}
+            <AddRemainder />
         </React.Fragment>
     )
 }
