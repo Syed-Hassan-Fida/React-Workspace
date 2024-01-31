@@ -9,6 +9,7 @@ const Dashboard = () => {
             <Header />
             {/* <Login/> */}
             <AddRemainder />
+            
         </React.Fragment>
     )
 }

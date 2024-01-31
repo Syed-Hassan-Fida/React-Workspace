@@ -1,9 +1,11 @@
 import React, {useState, useEffect, useRef} from 'react'
+import useDocumentTitle from '../customHooks/useDocumentTitle'
 
 const UseRefHook = () => {
     const [timer, setTimer] = useState(0)
     const intervalRef = useRef(0)
 
+    useDocumentTitle(timer)
     useEffect(() =>{
         intervalRef.current = setInterval(() => {
             setTimer((prevTimer) => prevTimer + 1)
