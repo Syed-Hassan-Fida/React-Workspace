@@ -28,6 +28,7 @@ const Form = () => {
     }
 
     useEffect(()=>{
+        // component did mount
         inputRef.current.focus()
     },[])
     
