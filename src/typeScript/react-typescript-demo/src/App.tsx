@@ -1,5 +1,6 @@
 import Greet from './componnets/Greet';
 import Heading from './componnets/Heading';
+import Main from './componnets/Main';
 
 function App() {
   const personObject = {
@@ -26,6 +27,7 @@ function App() {
       <Greet name="ali" person={personObject} array={arrayOfList} status="loading" personCount={0}>
         <Heading>PlaceHolder Text</Heading>
       </Greet>
+      <Main/>
     </div>
   );
 }
