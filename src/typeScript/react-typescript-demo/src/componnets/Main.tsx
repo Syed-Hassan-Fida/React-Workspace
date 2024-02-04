@@ -1,7 +1,9 @@
 import { Button } from './Button'
 import Container from './Container'
+import { Counter } from './Counter'
 import Input from './Input'
 import User from './User'
+import { UserContextProvider } from './UserContext'
 
 const Main = () => {
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
@@ -17,7 +19,12 @@ const Main = () => {
                 console.log("detected a change")
             }} />
             <Container style={{ border: "1px solid black", padding: "2px", margin: "5px" }}></Container>
-            <User/>
+
+            {/* with context api */}
+            <UserContextProvider>
+                <User />
+            </UserContextProvider>
+            <Counter />
         </div>
     )
 }
