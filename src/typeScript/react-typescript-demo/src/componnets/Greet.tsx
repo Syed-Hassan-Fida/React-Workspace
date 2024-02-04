@@ -1,21 +1,8 @@
 import React from "react"
+import { GreetProps } from './Types'
 
-type GreetProps = {
-    name: string,
-    person: {
-        first: string,
-        last: string
-    },
-    array: {
-        first: string,
-        last: string
-    }[],
-    status: 'loading' | 'success' | 'error',
-    children?: React.ReactNode,
-    personCount?: number // '?' is for optional use in defining props 
-}
 const Greet = (props: GreetProps) => {
-    const {personCount = 0} = props 
+    const { personCount = 0 } = props
     let message
     if (props.status === 'loading') {
         message = 'laoding....'
@@ -23,7 +10,7 @@ const Greet = (props: GreetProps) => {
         message = 'success....'
     } else if (props.status === 'error') {
         message = 'error....'
-    } 
+    }
     return (
         <div>
             <h1>Greet {props.name}</h1>

@@ -1,5 +1,7 @@
 import { Button } from './Button'
+import Container from './Container'
 import Input from './Input'
+import User from './User'
 
 const Main = () => {
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
@@ -13,8 +15,9 @@ const Main = () => {
             }} /> */}
             <Input value='' handleChange={(event) => {
                 console.log("detected a change")
-            }}/>
-
+            }} />
+            <Container style={{ border: "1px solid black", padding: "2px", margin: "5px" }}></Container>
+            <User/>
         </div>
     )
 }

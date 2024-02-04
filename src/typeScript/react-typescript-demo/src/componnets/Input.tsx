@@ -1,9 +1,6 @@
 import { useState } from "react";
+import { HandleChange } from './Types'
 
-type HandleChange = {
-    value: string,
-    handleChange:  (event: React.ChangeEvent<HTMLInputElement>) => void
-}
 
 const Input = (props: HandleChange) => {
     const [inputValue, setInputValue] = useState(props.value || '');
@@ -11,11 +8,11 @@ const Input = (props: HandleChange) => {
         setInputValue(event.target.value);
         props.handleChange(event);
     }
-  return (
-    <div>
-        <input type="text" value={inputValue} onChange={handleInputChange} />
-    </div>
-  )
+    return (
+        <div>
+            <input type="text" value={inputValue} onChange={handleInputChange} />
+        </div>
+    )
 }
 
 export default Input
