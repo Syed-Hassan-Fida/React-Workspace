@@ -1,3 +1,4 @@
+import { Lists } from './Lists'
 import { Button } from './Button'
 import Container from './Container'
 import { Counter } from './Counter'
@@ -25,6 +26,15 @@ const Main = () => {
                 <User />
             </UserContextProvider>
             <Counter />
+
+            <Lists items={[{
+                id: 1,
+                name: "react"
+            },
+            {
+                id: 2,
+                name: "react"
+            }]} handleClick={(items) => console.log("items is ", items)} />
         </div>
     )
 }
