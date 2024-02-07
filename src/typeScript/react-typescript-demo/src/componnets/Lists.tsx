@@ -3,7 +3,8 @@ type ListType<T> = {
     handleClick: (value: T) => void
 }
 
-// this concept i sgeneric props and also study the restriction props
+// this concept i sgeneric props and also study the restriction props 
+// template literals and exclude and wrapping element and omit
 // export const Lists = <T extends {id: number}>({items, handleClick}: ListType<T>) => {
 export const Lists = <T extends {id: number}>({items, handleClick}: ListType<T>) => {
   return (

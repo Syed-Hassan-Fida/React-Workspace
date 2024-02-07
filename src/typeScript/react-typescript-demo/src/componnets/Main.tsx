@@ -5,6 +5,7 @@ import { Counter } from './Counter'
 import Input from './Input'
 import User from './User'
 import { UserContextProvider } from './UserContext'
+import { CustomButon } from './wrapComponent/CustomButtom'
 
 const Main = () => {
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
@@ -35,6 +36,9 @@ const Main = () => {
                 id: 2,
                 name: "react"
             }]} handleClick={(items) => console.log("items is ", items)} />
+            <CustomButon variant='primary' onClick={()=>console.log('button clicked')}>
+                Primary Button
+            </CustomButon>
         </div>
     )
 }
