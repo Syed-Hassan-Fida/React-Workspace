@@ -6,6 +6,7 @@ import Input from './Input'
 import User from './User'
 import { UserContextProvider } from './UserContext'
 import { CustomButon } from './wrapComponent/CustomButtom'
+import { Test } from './polymorphicComponents/Test'
 
 const Main = () => {
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>, id: number) => {
@@ -39,6 +40,9 @@ const Main = () => {
             <CustomButon variant='primary' onClick={()=>console.log('button clicked')}>
                 Primary Button
             </CustomButon>
+            <Test as='h1' size='sm' color='primary'>
+                Primary Color
+            </Test>
         </div>
     )
 }
