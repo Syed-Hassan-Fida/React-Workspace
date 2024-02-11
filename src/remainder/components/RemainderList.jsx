@@ -144,8 +144,8 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
             );
           })
         ) : (
-          <div className='m-3 lists'>
-            <p>No Tasks Yet...</p>
+          <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>
         )}
 
