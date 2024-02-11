@@ -71,16 +71,16 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
   const { viewModalVisible, editModalVisible, selectedId } = state;
 
   return (
-    <div className='d-flex flex-wrap flex-column p-2 justify-content-left remainder pt-4 pb-4'>
+    <div className='p-2 remainder pt-4 pb-4'>
       <h1 className='m-3'>Reminder List</h1>
-      <div>
+      <div class="row">
         {reminderList.length !== 0 ? (
           reminderList.map((value) => {
             const isTaskOverdue = taskOverdue(value);
 
             const priority_Class = priorityClass(value)
 
-            const borderStyle = isTaskOverdue ? { borderLeft: '4px solid red' } : {};
+            const borderStyle = isTaskOverdue ? { borderLeft: '4px solid red', width: 'auto' } : {};
             const taskExpired = isTaskOverdue ? 'Task Expired' : '';
 
             const countdownThreshold = {
@@ -92,8 +92,8 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
             const showCountdownAlert = !isTaskOverdue && countdowns[value.id] <= countdownThreshold;
 
             return (
-              <div key={value.id} >
-                <div className={`m-3 lists ${priority_Class}`} style={borderStyle} title={taskExpired}>
+              <div key={value.id} className={`m-3 col-12 col-md-3 ${priority_Class}`} style={borderStyle} title={taskExpired}>
+                {/* <div className={`m-3 lists ${priority_Class}`} style={borderStyle} title={taskExpired}>
                   <div>
                     <span>{value.name.toUpperCase()}</span>
                   </div>
@@ -116,9 +116,31 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
                       delete
                     </span>
                   </div>
-                </div>
-
+                </div> */}
+                  <div className={`card ${priority_Class}`} style={{ width: "18rem" }}>
+                    <div className="card-body">
+                      <div>
+                        <h5 className="card-title">{value.name.toUpperCase()}</h5>
+                        <span className='material-icons' style={{ color: 'gray', marginRight: '5px' }} onClick={() => openModal('VIEW', value.id)}>
+                          visibility
+                        </span>
+                        <span className='material-icons' style={{ color: 'green', marginRight: '5px' }} onClick={() => openModal('EDIT', value.id)}>
+                          edit
+                        </span>
+                        <span className='material-icons' style={{ color: 'red' }} onClick={() => handleDelete(value.id)}>
+                          delete
+                        </span>
+                      </div>
+                      <p className="card-text">Description: {value.description}</p>
+                      {showCountdownAlert && (
+                        <span className="btn btn-primary" style={{ width: "fit-content" }} role='alert'>
+                          Countdown: {formatCountdown(countdowns[value.id])}
+                        </span>
+                      )}
+                    </div>
+                  </div>
               </div>
+
             );
           })
         ) : (
@@ -126,7 +148,10 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
             <p>No Tasks Yet...</p>
           </div>
         )}
+
+
       </div>
+
       {viewModalVisible && <ViewModal onClose={() => { closeModal('VIEW'); }} id={selectedId} handleSubmission={handleSubmission} />}
       {editModalVisible && <EditModal onClose={() => { closeModal('EDIT'); }} id={selectedId} handleSubmission={handleSubmission} />}
     </div>
