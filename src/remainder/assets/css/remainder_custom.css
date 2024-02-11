@@ -65,3 +65,21 @@
     text-overflow: ellipsis;
     max-width: 200px;
 }
+
+.card-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.card-title-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+.icons-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: baseline;
+}
