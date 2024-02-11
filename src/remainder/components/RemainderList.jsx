@@ -80,7 +80,7 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
 
             const priority_Class = priorityClass(value)
 
-            const borderStyle = isTaskOverdue ? { borderLeft: '4px solid red', width: 'auto' } : {width: 'auto'};
+            const borderStyle = isTaskOverdue ? { borderLeft: '4px solid red', width: 'auto' } : { width: 'auto' };
             const taskExpired = isTaskOverdue ? 'Task Expired' : '';
 
             const countdownThreshold = {
