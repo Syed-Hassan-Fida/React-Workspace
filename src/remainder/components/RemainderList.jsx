@@ -124,13 +124,13 @@ const RemainderList = ({ reminderList, handleDelete, handleSubmission }) => {
                         <h5 className="card-title">{value.name.toUpperCase()}</h5>
                       </div>
                       <div className='icons-container'>
-                        <span className='material-icons' style={{ color: 'gray', marginRight: '5px' }} onClick={() => openModal('VIEW', value.id)}>
+                        <span className='material-icons .view-icon' onClick={() => openModal('VIEW', value.id)}>
                           visibility
                         </span>
-                        <span className='material-icons' style={{ color: 'green', marginRight: '5px' }} onClick={() => openModal('EDIT', value.id)}>
+                        <span className='material-icons .edit-icon' onClick={() => openModal('EDIT', value.id)}>
                           edit
                         </span>
-                        <span className='material-icons' style={{ color: 'red' }} onClick={() => handleDelete(value.id)}>
+                        <span className='material-icons .delete-icon' onClick={() => handleDelete(value.id)}>
                           delete
                         </span>
                       </div>

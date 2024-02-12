@@ -83,3 +83,17 @@
     justify-content: flex-end;
     align-items: baseline;
 }
+
+.view-icon {
+    color: 'gray';
+    margin-right: '5px'
+}
+
+.edit-icon {
+    color: 'green';
+    margin-right: '5px'
+}
+
+.edit-icon {
+    color: 'red';
+}
