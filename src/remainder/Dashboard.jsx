@@ -8,9 +8,9 @@ import ChildOne from '../optimization/ChildOne'
 const Dashboard = () => {
     return (
         <React.Fragment>
-            <Header />
-            {/* <Login/> */}
-            <AddRemainder />
+            {/* <Header /> */}
+            <Login/>
+            {/* <AddRemainder /> */}
 
             {/* call child component as children */}
             {/* <ParentOne>
