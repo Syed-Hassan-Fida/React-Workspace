@@ -6,7 +6,6 @@ const LoginComponent = ({onSubmit}) => {
     const toggleMode = () => {
         var newMode = currentMode === 'login' ? 'signup' : 'login';
         setCurrentMode(newMode);
-        console.log("ok", currentMode)
     }
     return (
         <div>
