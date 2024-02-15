@@ -17,39 +17,7 @@ import MainUseCallBack from './components/UseCallBack/MainUseCallBack';
 import Dashboard from './remainder/Dashboard';
 import MainUseMemoHook from './components/useMemoHook/MainUseMemoHook';
 
-// Higher Order Component function
-const withLogging = (WrappedComponent) => {
-  class WithLogging extends Component {
-    componentDidMount() {
-      console.log(`Component ${WrappedComponent.name} is mounted`);
-    }
 
-    componentWillUnmount() {
-      console.log(`Component ${WrappedComponent.name} is unmounted`);
-    }
-
-    render() {
-      return <WrappedComponent {...this.props} />;
-    }
-  }
-
-  return WithLogging;
-};
-
-// Your regular functional component
-const MyComponent = (props) => {
-  return (
-    <div>
-      <p>My Component</p>
-      {/* Your component logic goes here */}
-    </div>
-  );
-};
-
-// Wrap your component with the HOC
-const MyComponentWithLogging = withLogging(MyComponent);
-
-// Now use MyComponentWithLogging in your app
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -85,8 +53,6 @@ const App = () => {
         {/* <ParentComp /> */}
         {/* <Form/> */}
         {/* <ParentComponent /> */}
-        {/* <h1>Higher Order Component Example</h1> */}
-        {/* <MyComponentWithLogging /> */}
       {/* </ErrorBoundary> */}
     </div>
   );
