@@ -9,7 +9,7 @@ const Dashboard = () => {
     return (
         <React.Fragment>
             {/* <Header /> */}
-            <Login/>
+            <Login />
             {/* <AddRemainder /> */}
 
             {/* call child component as children */}

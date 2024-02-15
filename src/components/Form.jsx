@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import {
     TextField, Button, Select, MenuItem,
-    FormControl, InputLabel, Container, Typography 
+    FormControl, InputLabel, Container, Typography
 } from '@mui/material';
 
 const Form = () => {
@@ -27,11 +27,11 @@ const Form = () => {
         e.preventDefault()
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         // component did mount
         inputRef.current.focus()
-    },[])
-    
+    }, [])
+
 
     return (
         <React.Fragment>

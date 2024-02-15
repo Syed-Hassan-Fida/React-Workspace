@@ -31,28 +31,28 @@ const App = () => {
   return (
     <div>
       {/* <MainUseMemoHook/> */}
-      <Dashboard/>
+      <Dashboard />
       {/* <ErrorBoundary> */}
-        {/* <MainUseCallBack/> */}
-        {/* <MainUseReducer/> */}
-        {/* <MainRedux/> */}
-        {/* <MainReactHooks/> */}
-        {/* <MainAxios/> */}
-        {/* <ContextMain/> */}
-        {/* <ClickCounter name="Hassan"/>
+      {/* <MainUseCallBack/> */}
+      {/* <MainUseReducer/> */}
+      {/* <MainRedux/> */}
+      {/* <MainReactHooks/> */}
+      {/* <MainAxios/> */}
+      {/* <ContextMain/> */}
+      {/* <ClickCounter name="Hassan"/>
         <HoverCounter/>
 
         <Main/> */}
-        {/* <button onClick={openModal}>Open Modal</button>
+      {/* <button onClick={openModal}>Open Modal</button>
         {modalVisible && (
           <Portal onClose={closeModal} name="joker">
             <h2>This is a modal!</h2>
             <p>Click outside the modal or the close button to close it.</p>
           </Portal>
         )} */}
-        {/* <ParentComp /> */}
-        {/* <Form/> */}
-        {/* <ParentComponent /> */}
+      {/* <ParentComp /> */}
+      {/* <Form/> */}
+      {/* <ParentComponent /> */}
       {/* </ErrorBoundary> */}
     </div>
   );
